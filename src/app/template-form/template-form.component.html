@@ -3,7 +3,10 @@
         <label for="nome" class="form-label">Nome</label>
         <input type="text" class="form-control" id="nome" name="nome"
         placeholder="Nome" aria-describedby="nomeHelp" [ngModel]="usuario.nome"
-        required>
+        required #nome>
+        <!-- <div>
+            {{ nome.className }}
+        </div> -->
     </div>
     <div class="form">
         <label for="email" class="form-label">Email</label>
