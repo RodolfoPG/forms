@@ -1,23 +1,93 @@
-<form #f="ngForm" (ngSubmit)="onSubmit(f)">
-    <div class="form" [class.was-validated]="!nome.valid && nome.touched || nome.valid && nome.touched">
-        <label for="nome" class="form-label">Nome</label>
-        <input type="text" class="form-control" id="nome" name="nome"
-        placeholder="Nome" aria-describedby="nomeHelp" [ngModel]="usuario.nome"
-        required #nome="ngModel">
-        <!-- <div>
-            {{ nome.className }}
-        </div> -->
-        <div *ngIf="!nome.valid && nome.touched" class="alert alert-danger" role="alert">
-            Nome é obrigatório.
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" class="row">
+    <div [class.was-validated]="!nome.valid && nome.touched || nome.valid && nome.touched">
+        <div class="col-sm-12">
+            <label for="nome" class="form-label">Nome</label>
+        </div>
+        <div class="col-sm-12">
+            <input type="text" class="form-control" id="nome" name="nome"
+                placeholder="Nome" aria-describedby="nomeHelp" [ngModel]="usuario.nome"
+                required #nome="ngModel">
+            <!-- <div>
+                {{ nome.className }}
+            </div> -->
+            <div *ngIf="!nome.valid && nome.touched" class="alert alert-danger" role="alert">
+                Nome é obrigatório.
+            </div>
         </div>
     </div>
-    <div class="form" [class.was-validated]="!email.valid && email.touched || email.valid && email.touched">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" name="email"
-        placeholder="nome@email.com" aria-describedby="emailHelp" [ngModel]="usuario.email"
-        required email #email="ngModel">
-        <div *ngIf="!email.valid && email.touched" class="alert alert-danger" role="alert">
-            Email inválido.
+    <div [class.was-validated]="!email.valid && email.touched || email.valid && email.touched">
+        <div class="col-sm-12">
+            <label for="email" class="form-label">Email</label>
+        </div>
+        <div class="col-sm-12">
+            <input type="email" class="form-control" id="email" name="email"
+                placeholder="nome@email.com" aria-describedby="emailHelp" [ngModel]="usuario.email"
+                required email #email="ngModel">
+            <div *ngIf="!email.valid && email.touched" class="alert alert-danger" role="alert">
+                Email inválido.
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3" [class.was-validated]="!cep.valid && cep.touched || cep.valid && cep.touched">
+            <label for="cep" class="form-label">CEP</label>
+            <input type="text" class="form-control" id="cep" name="cep"
+                ngModel required #cep="ngModel">
+            <div *ngIf="!cep.valid && cep.touched" class="alert alert-danger" role="alert">
+                CEP é obrigatório.
+            </div>
+        </div>
+        <div class="col-md-3" [class.was-validated]="!numero.valid && numero.touched || numero.valid && numero.touched">
+            <label for="numero" class="form-label">Número</label>
+            <input type="text" class="form-control" id="numero" name="numero"
+                ngModel required #numero="ngModel">
+            <div *ngIf="!numero.valid && numero.touched" class="alert alert-danger" role="alert">
+                Número é obrigatório.
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="complemento" class="form-label">Complemento</label>
+            <input type="text" class="form-control" id="complemento" name="complemento"
+                ngModel #complemento="ngModel">
+        </div>
+    </div>
+    <div [class.was-validated]="!rua.valid && rua.touched || rua.valid && rua.touched">
+        <div class="col-sm-12">
+            <label for="rua" class="form-label">Rua</label>
+        </div>
+        <div class="col-sm-12">
+            <input type="text" class="form-control" id="rua" name="rua"
+                aria-describedby="ruaHelp" [ngModel]="usuario.rua"
+                required #rua="ngModel">
+            <div *ngIf="!rua.valid && rua.touched" class="alert alert-danger" role="alert">
+                Rua é obrigatória.
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5" [class.was-validated]="!bairro.valid && bairro.touched || bairro.valid && bairro.touched">
+            <label for="bairro" class="form-label">Bairro</label>
+            <input type="text" class="form-control" id="bairro" name="bairro"
+                ngModel required #bairro="ngModel">
+            <div *ngIf="!bairro.valid && bairro.touched" class="alert alert-danger" role="alert">
+                Bairro é obrigatório.
+            </div>
+        </div>
+        <div class="col-md-4" [class.was-validated]="!cidade.valid && cidade.touched || cidade.valid && cidade.touched">
+            <label for="cidade" class="form-label">Cidade</label>
+            <input type="text" class="form-control" id="cidade" name="cidade"
+                ngModel required #cidade="ngModel">
+            <div *ngIf="!cidade.valid && cidade.touched" class="alert alert-danger" role="alert">
+                Cidade é obrigatória.
+            </div>
+        </div>
+        <div class="col-md-3" [class.was-validated]="!estado.valid && estado.touched || estado.valid && estado.touched">
+            <label for="estado" class="form-label">Estado</label>
+            <input type="text" class="form-control" id="estado" name="estado"
+                ngModel required #estado="ngModel">
+            <div *ngIf="!estado.valid && estado.touched" class="alert alert-danger" role="alert">
+                Estado é obrigatório.
+            </div>
         </div>
     </div>
     
