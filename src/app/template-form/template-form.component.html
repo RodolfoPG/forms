@@ -34,7 +34,7 @@
                 <label for="cep" class="form-label">CEP</label>
                 <input type="text" class="form-control" id="cep" name="cep"
                     ngModel required #cep="ngModel"
-                    (blur)="consultaCEP(cep.value)">
+                    (blur)="consultaCEP(cep.value, f)">
                 <app-campo-control-erro [mostrarErro]="verificaValidTouched(cep)[0]"
                     msgErro="CEP é obrigatório.">
                 </app-campo-control-erro>
@@ -59,8 +59,7 @@
             </div>
             <div class="col-sm-12">
                 <input type="text" class="form-control" id="rua" name="rua"
-                    aria-describedby="ruaHelp" [ngModel]="usuario.rua"
-                    required #rua="ngModel">
+                aria-describedby="ruaHelp" ngModel required #rua="ngModel">
                 <app-campo-control-erro [mostrarErro]="verificaValidTouched(rua)[0]"
                     msgErro="Rua é obrigatória.">
                 </app-campo-control-erro>
