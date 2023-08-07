@@ -18,4 +18,20 @@ export class TemplateFormComponent {
     //console.log(this.usuario)
   }
 
+  verificaValidTouched(campo: any) {
+
+    const isValidated = !campo.valid && campo.touched
+    
+    return [
+      isValidated,
+      isValidated || campo.valid && campo.touched
+    ]
+  }
+
+  aplicaCssErro(campo: any) {
+    return {
+      'was-validated': this.verificaValidTouched(campo)[1]
+    }
+  }
+
 }
