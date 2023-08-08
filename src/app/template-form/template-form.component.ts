@@ -18,6 +18,10 @@ export class TemplateFormComponent {
     console.log(form)
 
     //console.log(this.usuario)
+
+    this.http.post('https://httpbin.org/post', JSON.stringify(form.value))
+      .pipe(map((res: any) => res))
+      .subscribe((dados: any) => console.log(dados))
   }
 
   constructor(private http: HttpClient) {
