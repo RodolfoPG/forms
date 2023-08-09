@@ -14,14 +14,17 @@ export class TemplateFormComponent {
     email: null
   }
 
-  onSubmit(form: any) {
-    console.log(form)
+  onSubmit(formulario: any) {
+    console.log(formulario)
 
     //console.log(this.usuario)
 
-    this.http.post('https://httpbin.org/post', JSON.stringify(form.value))
+    this.http.post('https://httpbin.org/post', JSON.stringify(formulario.value))
       .pipe(map((res: any) => res))
-      .subscribe((dados: any) => console.log(dados))
+      .subscribe((dados: any) => {
+        console.log(dados)
+        formulario.form.reset()
+      })
   }
 
   constructor(private http: HttpClient) {
