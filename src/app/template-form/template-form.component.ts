@@ -72,7 +72,7 @@ export class TemplateFormComponent {
     // formulario.setValue({
     //   nome: formulario.value.nome,
     //   email: formulario.value.email,
-    //   endereço: {
+    //   endereco: {
     //     rua: dados.logradouro,
     //     cep: dados.cep,
     //     numero: '',
@@ -84,7 +84,7 @@ export class TemplateFormComponent {
     // })
 
     formulario.form.patchValue({
-      endereço: {
+      endereco: {
         rua: dados.logradouro,
         //cep: dados.cep,
         complemento: dados.complemento,
@@ -99,7 +99,7 @@ export class TemplateFormComponent {
 
   resetaDadosForm(formulario: any) {
     formulario.form.patchValue({
-      endereço: {
+      endereco: {
         rua: null,
         complemento: null,
         bairro: null,
