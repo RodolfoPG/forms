@@ -20,7 +20,6 @@ export class TemplateFormComponent {
     //console.log(this.usuario)
 
     this.http.post('https://httpbin.org/post', JSON.stringify(formulario.value))
-      .pipe(map((res: any) => res))
       .subscribe((dados: any) => {
         console.log(dados)
         formulario.form.reset()
@@ -62,7 +61,6 @@ export class TemplateFormComponent {
         this.resetaDadosForm(form)
 
         this.http.get(`//viacep.com.br/ws/${cep}/json/`)
-          .pipe(map((dados: any) => dados))
           .subscribe(dados => this.populaDadosForm(dados, form))
       }
     }

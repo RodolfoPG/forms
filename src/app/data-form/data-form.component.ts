@@ -61,7 +61,6 @@ export class DataFormComponent implements OnInit{
 
     if (this.formulario.valid) {
       this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
-      .pipe(map((res: any) => res))
       .subscribe((dados: any) => {
         console.log(dados);
         //reseta o form
@@ -131,7 +130,6 @@ export class DataFormComponent implements OnInit{
         this.resetaDadosForm()
 
         this.http.get(`//viacep.com.br/ws/${cep}/json/`)
-          .pipe(map((dados: any) => dados))
           .subscribe(dados => this.populaDadosForm(dados))
       }
     }
