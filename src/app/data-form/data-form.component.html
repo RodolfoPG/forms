@@ -1,4 +1,4 @@
-<form class="row" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
     <div [ngClass]="aplicaCssErro('nome')">
         <div class="col-sm-12">
             <label for="nome" class="form-label">Nome</label>
@@ -100,11 +100,20 @@
                 <option *ngFor="let cargo of cargos" [ngValue]="cargo">{{ cargo.desc }}</option>
             </select>
         </div>
+
+        <div class="col-md-3" [ngClass]="aplicaCssErro('tecnologias')">
+            <label for="tecnologias" class="form-label">Tecnologias</label>
+            <select multiple class="form-control" id="tecnologias"
+                required formControlName="tecnologias">
+                <option *ngFor="let tecnologia of tecnologias" [value]="tecnologia.nome">{{ tecnologia.desc }}</option>
+            </select>
+        </div>
     </div>
 
     <button type="submit" class="btn btn-primary mt-3">Submit</button>
-    <button class="btn" (click)="resetar()">Cancelar</button>
-    <button class="btn" (click)="setarCargo()">Cargo</button>
+    <button class="btn btn-default" (click)="resetar()">Cancelar</button>
+    <button class="btn btn-info" (click)="setarCargo()">Cargo</button>
+    <button class="btn btn-info" (click)="setarTecnologias()">Tecnologias</button>
 
     <app-form-debug [form]="formulario"></app-form-debug>
 </form>
