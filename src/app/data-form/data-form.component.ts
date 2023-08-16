@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import { DropdownService } from '../shared/services/dropdown.service';
@@ -20,6 +20,7 @@ export class DataFormComponent implements OnInit{
   cargos!: any[]
   tecnologias!: any[]
   newsletterOp!: any[]
+  frameworks = ['Angular', 'React', 'Vue', 'Sencha']
 
   constructor(
     private formBuilder: FormBuilder,
@@ -67,8 +68,20 @@ export class DataFormComponent implements OnInit{
       cargo: [null],
       tecnologias: [null],
       newsletter: ['s'],
-      termos: [null, Validators.requiredTrue]
+      termos: [null, Validators.requiredTrue],
+      frameworks: this.buildFrameworks()
     })
+  }
+
+  buildFrameworks() {
+    const values = this.frameworks.map(v => new FormControl(false))
+    return this.formBuilder.array(values)
+    // return [
+    //   new FormControl(false),
+    //   new FormControl(false),
+    //   new FormControl(false),
+    //   new FormControl(false)
+    // ]
   }
   
   //[Validators.required, Validators.minLength(3), Validators.maxLength(20)]]
@@ -76,8 +89,18 @@ export class DataFormComponent implements OnInit{
   onSubmit() {
     console.log(this.formulario.value)
 
+    let valueSubmit = Object.assign({}, this.formulario.value)
+
+    valueSubmit = Object.assign(valueSubmit, {
+      frameworks: valueSubmit.frameworks
+        .map((v: any, i: any) => v ? this.frameworks[i] : null)
+        .filter((v: any) => v !== null)
+    })
+
+    console.log(valueSubmit)
+
     if (this.formulario.valid) {
-      this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
+      this.http.post('https://httpbin.org/post', JSON.stringify(valueSubmit))
       .subscribe((dados: any) => {
         console.log(dados);
         //reseta o form
@@ -177,5 +200,9 @@ export class DataFormComponent implements OnInit{
 
   setarTecnologias() {
     this.formulario.get('tecnologias')?.setValue(['java', 'javascript', 'php'])
+  }
+
+  formArrayControls() {
+    return <FormArray>this.formulario.get('frameworks');
   }
 }
