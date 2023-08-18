@@ -1,4 +1,4 @@
-import { AbstractControl, FormArray, ValidatorFn } from "@angular/forms"
+import { AbstractControl, FormArray, FormControl, ValidatorFn } from "@angular/forms"
 
 
 export class FormValidations {
@@ -20,5 +20,15 @@ export class FormValidations {
           throw new Error('formArray is not an instance of FormArray')
         }
         return validator
+    }
+
+    static cepValidator(control: FormControl) {
+
+      const cep = control.value
+      if (cep && cep !== '') {
+        const validacep = /^[0-9]{8}$/
+        return validacep.test(cep) ? null : { cepInvalido: true }
+      }
+      return null
     }
 }
