@@ -7,9 +7,8 @@
             <input type="text" class="form-control" id="nome" formControlName="nome"
                 required placeholder="Nome" aria-describedby="nomeHelp">
         </div>
-        <app-campo-control-erro [mostrarErro]="verificaValidTouched('nome')[0]"
-            msgErro="Nome é obrigatório.">
-        </app-campo-control-erro>
+        <app-error-msg [control]="$any(formulario.get('nome'))" label="Nome">
+        </app-error-msg>
     </div>
     <div [ngClass]="aplicaCssErro('email')">
         <div class="col-sm-12">
