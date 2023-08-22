@@ -102,10 +102,20 @@
                     msgErro="Bairro é obrigatório.">
                 </app-campo-control-erro>
             </div>
-            <div class="col-md-4" [ngClass]="aplicaCssErro('endereco.cidade')">
+            <!-- <div class="col-md-4" [ngClass]="aplicaCssErro('endereco.cidade')">
                 <label for="cidade" class="form-label">Cidade</label>
                 <input type="text" class="form-control" id="cidade"
                     required formControlName="cidade">
+                <app-campo-control-erro [mostrarErro]="verificaValidTouched('endereco.cidade')[0]"
+                    msgErro="Cidade é obrigatória.">
+                </app-campo-control-erro>
+            </div> -->
+            <div class="col-md-4" [ngClass]="aplicaCssErro('endereco.cidade')">
+                <label for="cidade" class="form-label">Cidade</label>
+                <select class="form-control" id="cidade"
+                    required formControlName="cidade">
+                    <option *ngFor="let cidade of cidades" [value]="cidade.nome">{{ cidade.nome }}</option>
+                </select>
                 <app-campo-control-erro [mostrarErro]="verificaValidTouched('endereco.cidade')[0]"
                     msgErro="Cidade é obrigatória.">
                 </app-campo-control-erro>
@@ -114,7 +124,7 @@
                 <label for="estado" class="form-label">Estado</label>
                 <select class="form-control" id="estado"
                     required formControlName="estado">
-                    <option *ngFor="let estado of estados | async" [value]="estado.sigla">{{ estado.nome }}</option>
+                    <option *ngFor="let estado of estados" [value]="estado.sigla">{{ estado.nome }}</option>
                 </select>
                 <app-campo-control-erro [mostrarErro]="verificaValidTouched('endereco.estado')[0]"
                     msgErro="Estado é obrigatório.">
